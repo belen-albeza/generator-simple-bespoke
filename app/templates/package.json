@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "name": "<%= slug(title).toLowerCase() %>",
+    "author": "<%= author %>",
+    "private": true,
+    "dependencies": {
+        "gulp": "*",
+        "gulp-util": "*",
+        "browserify": "*",
+        "browserify-shim": "*",
+        "vinyl-source-stream": "*",
+        "watchify": "*",
+        "del": "*",
+        "merge-stream": "*",
+        "prismjs": "*",
+        "browser-sync": "*",
+        "bespoke": "*",
+        "bespoke-bullets": "*",
+        "bespoke-classes": "*",
+        "bespoke-hash": "*",
+        "bespoke-keys": "*",
+        "bespoke-scale": "*",
+        "bespoke-touch": "*",
+    },
+    "browser": {
+        "prism": "./node_modules/prismjs/prism.js"
+    },
+    "browserify-shim": {
+        "prism": "Prism"
+    }
+}
