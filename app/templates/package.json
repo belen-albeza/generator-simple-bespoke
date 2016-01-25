@@ -4,7 +4,8 @@
     "author": "<%= author %>",
     "private": true,
     "dependencies": { <% if (hasCode) { %>
-        "prismjs": "*",<% } %>
+        "prismjs": "*",<% } %><% if (css !== 'css') { %>
+        "gulp-<%= css %>": "*",<% } %>
         "gulp": "*",
         "gulp-util": "*",
         "browserify": "*",
