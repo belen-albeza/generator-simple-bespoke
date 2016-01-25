@@ -29,6 +29,12 @@ module.exports = generators.Base.extend({
             default: 'Someone',
             store: true
         }, {
+            type: 'confirm',
+            name: 'hasCode',
+            message: 'Use syntax highlighting for code samples',
+            default: true,
+            store: true
+        }, {
             type: 'list',
             name: 'html',
             message: 'HTML templating',
@@ -62,6 +68,7 @@ module.exports = generators.Base.extend({
         // template files
         [
             'package.json',
+            'src/main.js',
             'src/index.jade',
             `src/styles.${this.answers.css === 'less' ? 'less' : 'sass'}`
         ].map(function (filename) {

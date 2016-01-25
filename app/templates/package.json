@@ -3,7 +3,8 @@
     "name": "<%= slug(title).toLowerCase() %>",
     "author": "<%= author %>",
     "private": true,
-    "dependencies": {
+    "dependencies": { <% if (hasCode) { %>
+        "prismjs": "*",<% } %>
         "gulp": "*",
         "gulp-util": "*",
         "browserify": "*",
@@ -12,7 +13,6 @@
         "watchify": "*",
         "del": "*",
         "merge-stream": "*",
-        "prismjs": "*",
         "browser-sync": "*",
         "bespoke": "*",
         "bespoke-bullets": "*",
@@ -21,11 +21,11 @@
         "bespoke-keys": "*",
         "bespoke-scale": "*",
         "bespoke-touch": "*",
-    },
+    }<% if (hasCode) { %>,
     "browser": {
         "prism": "./node_modules/prismjs/prism.js"
     },
     "browserify-shim": {
         "prism": "Prism"
-    }
+    }<% } %>
 }
