@@ -1,0 +1,32 @@
+doctype html
+head
+    title <%= title %>
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="prism.css", type="text/css")
+    link(rel="stylesheet", href="styles.css", type="text/css")
+    
+body
+    article#deck
+        //- front slide with title and author
+        section: header
+            h1 <%= title %>
+            p <%= author %>
+            
+        section
+            h1 This is an example
+            ul.bullets
+                li Look, bullet lists!
+                li Wiiii
+                li And here's another
+        section
+            h1 Code examples
+            pre
+                code.language-css.
+                    body {
+                        font-family: Arial, sans-serif;
+                        font-size: 2em;
+                    }
+        section
+            h1 A slide with a picture
+            p: img(src="images/sample.png", alt="Sample image")
+    script(src="bundle.js")

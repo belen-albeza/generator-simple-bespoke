@@ -1,9 +1,13 @@
 'use strict';
 
+var path = require('path');
+var fs = require('fs');
+
 var generators = require('yeoman-generator');
 var slug = require('slug');
 var _ = require('lodash');
-var path = require('path');
+
+var filter = require('gulp-filter');
 
 module.exports = generators.Base.extend({
     constructor: function () {
@@ -34,6 +38,17 @@ module.exports = generators.Base.extend({
             ],
             default: 'html',
             store: true
+        }, {
+            type: 'list',
+            name: 'css',
+            message: 'CSS processing',
+            choices: [
+                { name: 'None (raw CSS)', value: 'css' },
+                { name: 'Sass', value: 'sass' },
+                { name: 'Less', value: 'less' }
+            ],
+            default: 'css',
+            store: true
         }], function (answers) {
             this.answers = answers;
             done();
@@ -41,17 +56,34 @@ module.exports = generators.Base.extend({
     },
 
     writing: function () {
-        let data = { "slug": slug };
+        let data = { slug: slug };
         _.extend(data, this.answers);
 
         // template files
         [
-            'package.json'
+            'package.json',
+            'src/index.jade',
+            `src/styles.${this.answers.css === 'less' ? 'less' : 'sass'}`
         ].map(function (filename) {
             this.fs.copyTpl(
                 this.templatePath(filename),
-                this.destinationPath(path.join('src', filename)),
+                this.destinationPath(filename),
                 data);
         }.bind(this));
+
+        // process jade template to ouput a HTML file if needed
+        if (this.answers.html === 'html') {
+            let jadeFilter = filter(['**/*.jade'], {restore: true});
+            this.registerTransformStream(jadeFilter);
+            this.registerTransformStream(require('gulp-jade')({pretty: true}));
+            this.registerTransformStream(jadeFilter.restore);
+        }
+        // process Sass template to ouput a CSS file if needed
+        if (this.answers.css === 'css') {
+            let sassFilter = filter(['**/*.sass'], {restore: true});
+            this.registerTransformStream(sassFilter);
+            this.registerTransformStream(require('gulp-sass')({indentWidth: 4}));
+            this.registerTransformStream(sassFilter.restore);
+        }
     }
 });

@@ -1,0 +1,80 @@
+@screenWidth: 1280px;
+@screenHeight: 720px;
+
+.fullspace {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.bespoke-parent {
+    &:extend(.fullspace);
+    overflow: hidden;
+}
+
+.bespoke-scale-parent {
+    &:extend(.fullspace);
+    pointer-events: none;
+}
+
+.bespoke-active {
+    pointer-events: auto;
+}
+
+.bespoke-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @screenWidth;
+    height: @screenHeight;
+    margin-left: -@screenWidth / 2;
+    margin-top: -@screenHeight / 2;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+
+    padding: 2em;
+    font-size: 3em;
+
+    transition: opacity 0.5s ease;
+}
+
+.bespoke-slide > * {
+    display: block;
+    width: 100%;
+}
+
+.bespoke-active {
+    transition-delay: 0.6s;
+    opacity: 1;
+}
+
+.bespoke-inactive {
+    opacity: 0;
+}
+
+.bespoke-slide ul, ol, dl {
+    margin-left: 0;
+    padding-left: 1em;
+    width: calc(100% - 1em);
+    text-align: left;
+}
+
+.bespoke-bullet {
+    transition: opacity 0.3s ease;
+}
+
+.bespoke-bullet-inactive {
+    opacity: 0;
+}
+
+p, li {
+    margin: 0.5em 0;
+    line-height: 1.25em;
+}
