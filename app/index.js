@@ -2,6 +2,7 @@
 
 var path = require('path');
 var fs = require('fs');
+var mkdirp = require('mkdirp');
 
 var generators = require('yeoman-generator');
 var slug = require('slug');
@@ -64,6 +65,10 @@ module.exports = generators.Base.extend({
     writing: function () {
         let data = { slug: slug };
         _.extend(data, this.answers);
+
+        // create empty folders
+        mkdirp.sync(path.join(this.destinationPath(), 'src', 'fonts'));
+        mkdirp.sync(path.join(this.destinationPath(), 'src', 'images'));
 
         // template files
         [
