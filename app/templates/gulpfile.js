@@ -12,9 +12,9 @@ var browserSync = require('browser-sync').create();
 var path = require('path');
 var del = require('del');
 
-<% if (html === 'jade') { %>require('gulp-jade');<% } %>
-<% if (css === 'sass') { %>require('gulp-sass');<% } %>
-<% if (css === 'less') { %>require('gulp-less');<% } %>
+<% if (html === 'jade') { %>var jade = require('gulp-jade');<% } %>
+<% if (css === 'sass') { %>var sass = require('gulp-sass');<% } %>
+<% if (css === 'less') { %>var less = require('gulp-less');<% } %>
 
 //
 // js
