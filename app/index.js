@@ -73,6 +73,7 @@ module.exports = generators.Base.extend({
         // template files
         [
             'package.json',
+            'gulpfile.js',
             'src/main.js',
             'src/index.jade',
             `src/styles.${this.answers.css === 'less' ? 'less' : 'sass'}`
@@ -97,5 +98,9 @@ module.exports = generators.Base.extend({
             this.registerTransformStream(require('gulp-sass')({indentWidth: 4}));
             this.registerTransformStream(sassFilter.restore);
         }
+    },
+
+    install: function () {
+        this.installDependencies({bower: false});
     }
 });

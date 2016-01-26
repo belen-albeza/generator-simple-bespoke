@@ -5,7 +5,8 @@
     "private": true,
     "dependencies": { <% if (hasCode) { %>
         "prismjs": "*",<% } %><% if (css !== 'css') { %>
-        "gulp-<%= css %>": "*",<% } %>
+        "gulp-<%= css %>": "*",<% } %><% if (html === 'jade') { %>
+        "gulp-jade": "*", <% } %>
         "gulp": "*",
         "gulp-util": "*",
         "browserify": "*",
@@ -21,7 +22,7 @@
         "bespoke-hash": "*",
         "bespoke-keys": "*",
         "bespoke-scale": "*",
-        "bespoke-touch": "*",
+        "bespoke-touch": "*"
     }<% if (hasCode) { %>,
     "browser": {
         "prism": "./node_modules/prismjs/prism.js"
