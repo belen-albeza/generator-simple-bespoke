@@ -62,6 +62,14 @@ To clean up the `dist` folder and development build files, run:
 gulp clean
 ```
 
+### Deploying to Github Pages
+
+If you want to deploy to Github Pages, you will need to answer `Y` when prompted _and_ setup a Github repository for this project. Then run:
+
+```
+gulp deploy
+```
+
 ### About themes
 
 I find that Bespoke.js theme plugins are hard to work with. The way the work is by analysing a stylesheet and then applying those styles, inline, with JavaScript, to elements of the DOM.

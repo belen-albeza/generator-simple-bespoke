@@ -4,9 +4,10 @@
     "author": "<%= author %>",
     "private": true,
     "dependencies": { <% if (hasCode) { %>
-        "prismjs": "*",<% } %><% if (css !== 'css') { %>
-        "gulp-<%= css %>": "*",<% } %><% if (html === 'jade') { %>
-        "gulp-jade": "*", <% } %>
+        "prismjs": "*",<% } if (css !== 'css') { %>
+        "gulp-<%= css %>": "*",<% } if (html === 'jade') { %>
+        "gulp-jade": "*", <% } if (isGithubDeploy) { %>
+        "gulp-gh-pages": "*", <% } %>
         "gulp": "*",
         "gulp-util": "*",
         "browserify": "*",

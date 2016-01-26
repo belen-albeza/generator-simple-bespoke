@@ -15,6 +15,7 @@ var del = require('del');
 <% if (html === 'jade') { %>var jade = require('gulp-jade');<% } %>
 <% if (css === 'sass') { %>var sass = require('gulp-sass');<% } %>
 <% if (css === 'less') { %>var less = require('gulp-less');<% } %>
+<% if (isGithubDeploy) { %>var ghPages = require('gulp-gh-pages');<% } %>
 
 //
 // js
@@ -100,6 +101,12 @@ gulp.task('dist', ['build'], function () {
 gulp.task('clean', function () {
     return del(['.tmp', 'dist']);
 });
+
+gulp.task('deploy', ['dist'], function () {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
+});
+
 
 //
 // dev mode

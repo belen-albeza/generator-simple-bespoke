@@ -36,6 +36,12 @@ module.exports = generators.Base.extend({
             default: true,
             store: true
         }, {
+            type: 'confirm',
+            name: 'isGithubDeploy',
+            message: 'Deploy to Github Pages',
+            default: false,
+            store: true
+        }, {
             type: 'list',
             name: 'html',
             message: 'HTML templating',
@@ -68,7 +74,11 @@ module.exports = generators.Base.extend({
 
         // create empty folders
         mkdirp.sync(path.join(this.destinationPath(), 'src', 'fonts'));
-        mkdirp.sync(path.join(this.destinationPath(), 'src', 'images'));
+
+        // copy non-processed files
+        this.fs.copy(
+            this.templatePath('src/images/sample.png'),
+            this.destinationPath('src/images/sample.png'));
 
         // template files
         [
