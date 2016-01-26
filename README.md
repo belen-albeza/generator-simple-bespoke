@@ -78,6 +78,12 @@ This has several disadvantages, such as ruining the CSS cascade and making the t
 
 This generator does not use that theme system. Instead, a simple stylesheet is provided with barebones functionality (so you can have an actual slideshow). You can add your own styles to this stylesheet.
 
+## Changelog
+
+**1.0.0**:
+
+- First version
+
 ## License
 
 `generator-simple-bespoke` is released under the MIT license. Read `LICENSE` for details.
