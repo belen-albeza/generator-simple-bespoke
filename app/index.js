@@ -82,6 +82,7 @@ module.exports = generators.Base.extend({
 
         // template files
         [
+            'README.md',
             'package.json',
             'gulpfile.js',
             'src/main.js',
